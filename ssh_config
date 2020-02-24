@@ -1,0 +1,22 @@
+Host ansible-target
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /dev/shm/vagrant_openshift_ansible/.vagrant/machines/master/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+
+Host ansible-target
+  HostName 127.0.0.1
+  User vagrant
+  Port 2200
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /dev/shm/vagrant_openshift_ansible/.vagrant/machines/worker/virtualbox/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+

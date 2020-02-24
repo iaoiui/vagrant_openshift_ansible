@@ -6,6 +6,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "16384"
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
 
@@ -17,5 +18,12 @@ Vagrant.configure("2") do |config|
         c.vm.provision :shell, :path => "scripts/bootstrap/vagrant-setup-hosts-file.sh"
     end
   end
-
+  (0..0).each do |n|
+    config.vm.define "worker" do |c|
+        c.vm.hostname = "worker"
+        c.vm.network "private_network", ip: "10.240.0.20"
+        c.vm.network :public_network, ip: "192.168.1.4", bridge: "eno1"
+        c.vm.provision :shell, :path => "scripts/bootstrap/vagrant-setup-hosts-file.sh"
+    end
+  end
 end
